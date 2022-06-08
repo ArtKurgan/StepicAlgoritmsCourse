@@ -12,8 +12,8 @@ def rmlines(l):
     dots.add(l[k][1])
     for i in range(1, n):
         if l[k+i][0] <= l[k][1] <= l[k+i][1]:
-            del l[k+i]
-    del l[k]
+            del l[k+i] # нужно заменить на что-то что бы сохранить индекс
+    del l[k] # нужно заменить на что-то что бы сохранить индекс
     if len(l) == 0:
         return(dots)
     return rmlines(l)
