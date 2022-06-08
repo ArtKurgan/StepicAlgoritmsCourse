@@ -11,8 +11,15 @@ while len(sortlines) != 0:
     k = 0
     dots.add(sortlines[k][1])
     for i in range(1, n):
-        if sortlines[k+i][0] <= sortlines[k][1] <= sortlines[k+i][1]:
-            del sortlines[k+i] # нужно заменить на что-то что бы сохранить индекс
-    del sortlines[k] # нужно заменить на что-то что бы сохранить индекс
+        i = i - k
+        if len(sortlines) == 1 or i == len(sortlines):
+            break
+        if sortlines[i][0] <= sortlines[0][1] <= sortlines[i][1]:
+            del sortlines[i]
+            k += 1
+    del sortlines[0]
 
-print(dots)
+print(len(dots))
+for i in dots:
+    print(i, '' , end='')
+
