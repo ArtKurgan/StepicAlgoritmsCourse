@@ -7,7 +7,6 @@ for i in range(len(s)):
         symb.add(s[i])
         l.append([s[i], s.count(s[i])])
 H = sorted(l, key=lambda x: x[1], reverse=True)
-Htmp =  sorted(l, key=lambda x: x[1], reverse=True)
 code1 = '1'
 code2 = '0'
 allin = {}
@@ -17,7 +16,6 @@ if len(s) > 1:
         a = H.pop(H.index(min(H, key=lambda x : x[1])))
         b = H.pop(H.index(min(H, key=lambda x : x[1])))
         moms.append(['k'+str(i), a[0], b[0]])
-        Htmp.append(['k' + str(i), a[1]+b[1]])
         H.append((['k' + str(i), a[1]+b[1]]))
     Hfinal =  sorted(Htmp, key=lambda x: x[1], reverse=True)
     for i in range(len(moms)-1, -1 , -1):
