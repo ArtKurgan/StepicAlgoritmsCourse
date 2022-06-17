@@ -1,7 +1,7 @@
 def siftup(i):
     if i <= 2:
        if kucha[i] > kucha[0]:
-            kucha[i], kucha [0] = kucha[0], kucha[i]
+            kucha[i], kucha[0] = kucha[0], kucha[i]
     while i > 0 and kucha[(i-1)//2] < kucha[i]:  
         kucha[i], kucha [(i-1)//2] = kucha[(i-1)//2], kucha[i]
         i = (i-1)//2
@@ -9,11 +9,13 @@ def sifdown(i):
     while 2 * i + 1 <= len(kucha) - 1:
         big = i
         if kucha[2*i+1] > kucha[big]:
-            big = 2 * i
+            big = 2 * i + 1
         if 2 * i + 2 <= len(kucha) - 1 and kucha[2*i+2] > kucha[big]:
-            big = 2*i+2
+            big = 2 * i + 2
         if i == big:
             break
+        kucha[i], kucha[big] = kucha[big], kucha[i]
+        i = big
 
 n = int(input())
 cnt = -1
