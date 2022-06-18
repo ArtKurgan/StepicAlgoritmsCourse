@@ -1,34 +1,30 @@
-def okrug():
-    x = (l + r) / 2
+def okrug(a, b):
+    x = (a + b) / 2
     if x < 1:
         x = 0
     else:
-        x = round((l + r) / 2)
+        x = round((a + b) / 2)
     return(x)
 
-n, *A = map(int, input().split())
-k, *nums = map(int, input().split())
-l = 0
-r = n-1
-res = []
-obrabotan = {}
-m = 0
-for i in range(k):
-    if nums[i] in obrabotan:
-        res.append(obrabotan[nums[i]])
-        continue
-    while l <= r and m <= len(A)-1:
+
+def binary_search(sorted_arr, findable_value):
+    l = 0
+    r = len(sorted_arr) - 1
+
+    while l <= r:
         m = (l + r) // 2
-        if A[m] == nums[i]:
-            res.append((A.index(nums[i])+1))
-            obrabotan[nums[i]] = (A.index(nums[i])+1)
-            break
-        elif A[m] > nums[i]:
+        if sorted_arr[m] == findable_value:
+            return m+1
+        elif sorted_arr[m] > findable_value:
             r = m - 1
         else:
             l = m + 1
-    if len(res) < i+1:
-        res.append(-1)
-    l = 0
-    r = n-1
-print(*res)
+
+    return -1
+
+n, *A = map(int, input().split())
+k, *nums = map(int, input().split())
+
+
+for i in range(k):
+    print(binary_search(A, nums[i]), end=' ')
