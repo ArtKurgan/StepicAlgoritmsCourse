@@ -11,12 +11,17 @@ k, *nums = map(int, input().split())
 l = 0
 r = n-1
 res = []
+obrabotan = {}
 m = 0
 for i in range(k):
+    if nums[i] in obrabotan:
+        res.append(obrabotan[nums[i]])
+        continue
     while l <= r and m <= len(A)-1:
         m = (l + r) // 2
         if A[m] == nums[i]:
             res.append((A.index(nums[i])+1))
+            obrabotan[nums[i]] = (A.index(nums[i])+1)
             break
         elif A[m] > nums[i]:
             r = m - 1
