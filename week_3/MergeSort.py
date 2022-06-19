@@ -4,8 +4,12 @@ array_input = list(map(int, input().split()))
 
 def separation(array, left_edge, right_edge):
     while left_edge < right_edge:
+        # if len(array) == 1:
+        #     return array
         middle = (left_edge + right_edge) // 2
-        merge(separation(array, left_edge, middle), separation(array, middle+1, right_edge))
+        array_left = array[0:middle+1]
+        array_right = array[middle+1:len(array)]
+        merge(separation(array_left, 0, middle), separation(array_right, middle+1, len(array)-1))
 
 
 def merge(array_1, array_2):
@@ -21,7 +25,8 @@ def merge(array_1, array_2):
             sorted_array.append(array_2.pop(0))
         elif array_1[0] < array_2[0]:
             sorted_array.append(array_1.pop(0))
-    return(sorted_array)
+    return sorted_array
+
 
 separation(array_input, 0, n-1)
 print(array_input)
