@@ -1,12 +1,3 @@
-def okrug(a, b):
-    x = (a + b) / 2
-    if x < 1:
-        x = 0
-    else:
-        x = round((a + b) / 2)
-    return(x)
-
-
 def binary_search(sorted_arr, findable_value):
     l = 0
     r = len(sorted_arr) - 1
