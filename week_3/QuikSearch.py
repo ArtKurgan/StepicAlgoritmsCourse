@@ -27,21 +27,28 @@ def quicksort(array, left_edge, right_edge):
     quicksort(array, m + 1, right_edge)
 
 
-def compare_in(array, dot):
-    count = 0
-    for i in range(len(array)):
-        if dot >= array[i]:
-            count += 1
-    return count
+def find_right(sorted_arr, dot):
+    l = 0
+    r = len(sorted_arr)
+    while l < r:
+        m = (l + r) // 2
+        if sorted_arr[m] <= dot:
+            l = m + 1
+        else:
+            r = m
+    return l
 
 
-def compare_out(array, dot):
-    count = 0
-    for i in range(len(array)):
-        if dot > array[i]:
-            count += 1
-    return count
-
+def find_left(sorted_arr, dot):
+    l = 0
+    r = len(sorted_arr)
+    while l < r:
+        m = (l + r) // 2
+        if sorted_arr[m] < dot:
+            l = m + 1
+        else:
+            r = m
+    return l
 
 quicksort(starts_lines, 0, nums_lines-1)
 quicksort(ends_lines, 0, nums_lines-1)
@@ -49,5 +56,5 @@ print(starts_lines)
 print(ends_lines)
 
 for i in range(nums_dots):
-    print(compare_in(starts_lines, dots[i]) - compare_out(ends_lines, dots[i]), end=' ')
+    print(find_right(starts_lines, dots[i]) - find_left(ends_lines, dots[i]), end=' ')
 
